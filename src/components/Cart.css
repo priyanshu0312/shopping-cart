@@ -129,7 +129,7 @@ header {
   background: linear-gradient(
     103.49deg,
     #ffffff -28.13%,
-    rgba(242, 247, 255, 0.5) 116.84%
+    rgba(206, 214, 228, 0.5) 116.84%
   );
   box-shadow: rgba(0, 0, 0, 0.08) 0rem 0.4rem 1.2rem;
   border-radius: 2rem;
@@ -205,7 +205,14 @@ header {
   outline: none;
   cursor: pointer;
 }
-
+.clear-cart{
+  background-color: rgba(245, 20, 20, 0.637) !important;
+  margin-left: 10px;
+}
+.clear-cart:hover{
+  background-color: rgba(245, 20, 20, 0.966) !important;
+  margin-left: 10px;
+}
 .add-minus-quantity input {
   width: 6rem;
   height: 3rem;
