@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import "./Cart.css";
 import { products } from "./Products";
 import ContextCart from "./ContextCart";
@@ -8,8 +8,9 @@ export const CartContext = createContext();
 
 const initialState = {
   item: products,
-  totalAmount: 0,
+  totalAmount: 25600,
   totalItem: 0,
+  quantity:1,
 };
 
 const Cart = () => {
@@ -26,12 +27,37 @@ const Cart = () => {
   // clear the all items in Cart
   const clearCart = () => {
     return dispatch({
-      type:"CLEAR_CART"
-    })
-  }
+      type: "CLEAR_CART",
+    });
+  };
+
+  // increment items in cart
+  const increment = (id) => {
+    return dispatch({
+      type: "INCREASE_ITEM",
+      payload: id,
+    });
+  };
+
+  // decrement items in cart
+  const decrement = (id) => {
+    return dispatch({
+      type: "DECREASE_ITEM",
+      payload: id,
+    });
+  };
+
+  // we will use the useeffect to update the data
+  useEffect(() => {
+    dispatch({
+      type: "GET_TOTAL",
+    });
+  }, [state.item]);
   return (
     <div>
-      <CartContext.Provider value={{ ...state, removeItem, clearCart }}>
+      <CartContext.Provider
+        value={{ ...state, removeItem, clearCart, increment, decrement }}
+      >
         <ContextCart />
       </CartContext.Provider>
     </div>
